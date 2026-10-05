@@ -55,15 +55,6 @@ function initMobileNav() {
     toggleMenu();
   });
 
-  var closeBtn = nav.querySelector(".mobile-nav__close");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      setOpen(false);
-      btn.focus();
-    });
-  }
-
   nav.querySelectorAll("a[href^='#']").forEach(function (link) {
     link.addEventListener("click", function () {
       setOpen(false);
