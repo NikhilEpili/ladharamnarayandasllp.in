@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   initBrandMarquee();
   initMobileNav();
+  initEnquiryForm();
+});
 
+function initEnquiryForm() {
   var form = document.querySelector("#enquiry form");
   if (!form) return;
   var btn = form.querySelector('button[type="button"]');
@@ -25,23 +28,31 @@ document.addEventListener("DOMContentLoaded", function () {
       encodeURIComponent(lines.join("\n"));
     window.open(url, "_blank", "noopener,noreferrer");
   });
-});
+}
 
 function initMobileNav() {
   var btn = document.querySelector(".hero-menu-btn");
   var nav = document.getElementById("mobile-nav");
   if (!btn || !nav) return;
 
+  nav.removeAttribute("hidden");
+
   function setOpen(open) {
     btn.setAttribute("aria-expanded", open ? "true" : "false");
     btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    nav.hidden = !open;
+    nav.setAttribute("aria-hidden", open ? "false" : "true");
     nav.classList.toggle("is-open", open);
+    document.documentElement.classList.toggle("nav-open", open);
     document.body.style.overflow = open ? "hidden" : "";
   }
 
-  btn.addEventListener("click", function () {
+  function toggleMenu() {
     setOpen(btn.getAttribute("aria-expanded") !== "true");
+  }
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    toggleMenu();
   });
 
   nav.querySelectorAll("a[href^='#']").forEach(function (link) {
@@ -56,6 +67,8 @@ function initMobileNav() {
       btn.focus();
     }
   });
+
+  setOpen(false);
 }
 
 function initBrandMarquee() {

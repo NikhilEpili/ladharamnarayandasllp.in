@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.Python
+.env
+.DS_Store
+Thumbs.db
+assets/logo-transparent.png

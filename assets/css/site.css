@@ -1,0 +1,126 @@
+body{margin:0;background:#F5ECD8}
+*{box-sizing:border-box}
+.w{max-width:1140px;margin:0 auto;padding:0 32px}
+.sec{padding:clamp(56px,8vw,88px) 0}
+.fd{font-family:'IM Fell English',Georgia,serif;font-weight:400;margin:0;line-height:1.1}
+.cz{font:600 12px Cinzel,serif;letter-spacing:.3em;text-transform:uppercase}
+.gd{color:#8A5E00}.dk .gd{color:#F5B318}
+.bd{font:400 19px/1.75 'EB Garamond',Georgia,serif;color:#2B3F22}
+.dk .bd{color:#E8DCC0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 34px;font:600 12px Cinzel,serif;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;border:1px solid #F5B318}
+.gold{background:#F5B318;color:#173F0B}.gold:hover{background:#FFD066}
+.line{color:#F5ECD8}.line:hover{background:rgba(245,179,24,.15)}
+.dr{height:7px;border-top:1px solid #C99100;border-bottom:1px solid #C99100}
+.orn{display:flex;align-items:center;justify-content:center;gap:14px;color:#C99100}
+.orn i{display:block;height:1px;width:70px;background:currentColor}
+.orn b{display:block;width:8px;height:8px;background:currentColor;transform:rotate(45deg)}
+.nv a{font:600 12px Cinzel,serif;letter-spacing:.22em;text-transform:uppercase;color:#173F0B;text-decoration:none;padding:14px 6px}
+.nv a:hover{color:#8A5E00}
+.st{padding:34px 12px;text-align:center}
+.st+.st{border-left:1px solid rgba(245,179,24,.4)}
+.st b{display:block;font:400 62px/1 'IM Fell English',serif;color:#F5B318}
+.st span{display:block;margin-top:10px;font:600 11px Cinzel,serif;letter-spacing:.2em;text-transform:uppercase;color:#E8DCC0}
+.ix{display:flex;align-items:baseline;gap:12px;padding:15px 0}
+.ix h3{margin:0;font:400 30px 'IM Fell English',serif;color:#173F0B}
+.ix i{flex:1;border-bottom:2px dotted #B8975A;transform:translateY(-6px)}
+.ix span{font:500 14px Cinzel,serif;letter-spacing:.1em;color:#8A5E00}
+.ix:hover h3{color:#8A5E00}
+.wy{display:flex;gap:28px;padding:30px 0;border-bottom:1px solid #CDB98A}
+.wy em{flex:none;width:72px;font:italic 400 46px/1 'IM Fell English',serif;color:#C99100}
+.wy h3{margin:0 0 6px;font:400 32px 'IM Fell English',serif}
+.bs{height:110px;display:flex;align-items:center;justify-content:center;font:600 11px Cinzel,serif;letter-spacing:.22em;color:#8A5E00;border:1px solid #CDB98A}
+.brand-marquee{--brand-marquee-gap:clamp(8px,1vw,14px);--brand-marquee-slot:clamp(72px,7.5vw,96px);overflow:hidden;overflow:clip;width:100%;max-width:100%;margin:0 auto 56px;padding:16px 0;position:relative;isolation:isolate;touch-action:pan-y}
+.brand-marquee__track{display:flex;align-items:center;gap:var(--brand-marquee-gap);width:max-content;will-change:transform;backface-visibility:hidden;transform:translate3d(var(--brand-marquee-x,0px),0,0);transform-style:preserve-3d}
+.brand-marquee__set{display:flex;align-items:center;gap:var(--brand-marquee-gap);flex-shrink:0}
+.brand-marquee__item{flex:0 0 var(--brand-marquee-slot);display:flex;align-items:center;justify-content:center;height:clamp(52px,7.5vw,84px)}
+.brand-marquee__item img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.brand-marquee--strip .brand-marquee__set img{height:clamp(108px,14vw,168px);max-width:none;width:auto}
+@media (prefers-reduced-motion:reduce){.brand-marquee{overflow-x:auto}}
+.lb{display:block;font:600 11px Cinzel,serif;letter-spacing:.24em;text-transform:uppercase;color:#173F0B}
+.in{width:100%;min-height:48px;padding:10px 2px;border:0;border-bottom:1px solid #8A7A4E;background:transparent;font:400 19px 'EB Garamond',serif;color:#173F0B;border-radius:0}
+.ft a{color:#E8DCC0;text-decoration:none;font:400 17px 'DM Sans',system-ui,sans-serif}.ft a:hover{color:#F5B318}
+.ft-phone{white-space:nowrap;margin:0 0 10px}
+.ft-phone a{display:inline}
+.hdr{background:#F5ECD8;padding:20px 0 2px;margin-top:0}
+.hdr .dr{height:3px;border-top-width:1px;border-bottom-width:1px}
+.hdr-row{display:flex;align-items:center;justify-content:center;gap:28px 40px;flex-wrap:wrap;padding:2px 0;width:100%}
+.hdr-logo{display:flex;align-items:center;flex-shrink:0;line-height:0;text-decoration:none}
+.hdr-logo img{height:80px;width:auto;display:block;background:transparent}
+.hdr-nav{display:flex;justify-content:center;align-items:center;gap:24px 28px;flex-wrap:wrap}
+.hdr-nav a{font:600 11px Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;color:#173F0B;text-decoration:none;padding:2px 4px;white-space:nowrap}
+.hdr-nav a:hover{color:#8A5E00}
+.hdr-nav a.nav-cta{color:#8A5E00}
+.hdr-rules{padding:0;line-height:0}
+.hero-shell{position:relative;isolation:isolate}
+.hero-shell__body{position:relative;z-index:0}
+.hero-menu-btn{display:none;position:absolute;top:14px;left:14px;z-index:1001;width:48px;height:48px;margin:0;padding:0;border:1px solid rgba(245,179,24,.55);border-radius:2px;background:rgba(23,63,11,.85);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.hero-menu-btn span{display:block;width:20px;height:2px;background:#F5B318;border-radius:1px;transition:transform .2s ease,opacity .2s ease}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:80px 24px 40px;background:rgba(23,63,11,.97);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.mobile-nav.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.mobile-nav a{font:600 13px Cinzel,serif;letter-spacing:.22em;text-transform:uppercase;color:#F5ECD8;text-decoration:none;padding:14px 20px;width:100%;max-width:320px;text-align:center;border:1px solid transparent;border-radius:2px}
+.mobile-nav a:hover,.mobile-nav a:focus-visible{color:#F5B318;border-color:rgba(245,179,24,.35);outline:none}
+.mobile-nav a.nav-cta{color:#F5B318;border-color:rgba(245,179,24,.45)}
+.why-visual{display:flex;flex-direction:column;min-height:100%}
+.serve-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:1.35rem;row-gap:.85rem;padding:34px 0;margin:0}
+.serve-item{font:italic 400 clamp(1.05rem,1.9vw,1.65rem)/1.35 'Cormorant Garamond',Georgia,serif;color:#F5ECD8}
+.serve-item+.serve-item::before{content:"◆";display:inline-block;margin-right:1.35rem;color:#F5B318;font-style:normal;font-size:.42em;line-height:1;vertical-align:middle;transform:translateY(-.12em);font-family:'DM Sans',sans-serif}
+
+html { scroll-behavior: smooth; }
+html.nav-open { overflow: hidden; }
+body { margin: 0; overflow-x: clip; background: #F5ECD8; }
+#top { width: 100%; min-height: 100%; }
+select.in { appearance: none; cursor: pointer; }
+
+/* Fluid layout for laptops and smaller desktops (no zoom — avoids side/bottom gaps) */
+@media (max-width: 1600px) {
+  .w { max-width: min(1140px, 94vw); padding: 0 clamp(16px, 2.5vw, 32px); }
+  .fd[style*="font-size:78px"] { font-size: clamp(2rem, 4.2vw, 3.25rem) !important; line-height: 1.12 !important; }
+  .fd[style*="font-size:56px"] { font-size: clamp(1.65rem, 3vw, 2.5rem) !important; }
+  .fd[style*="font-size:40px"] { font-size: clamp(1.4rem, 2.4vw, 2rem) !important; }
+  .fd[style*="font-size:34px"] { font-size: clamp(1.2rem, 2vw, 1.65rem) !important; }
+  .fd[style*="font-size:84px"] { font-size: clamp(2.25rem, 4.5vw, 3.5rem) !important; }
+  .fd[style*="font-size:32px"] { font-size: clamp(1.25rem, 2vw, 1.65rem) !important; }
+  .bd[style*="font-size:22px"] { font-size: clamp(1rem, 1.4vw, 1.2rem) !important; }
+  .bd[style*="font-size:18px"] { font-size: clamp(0.95rem, 1.2vw, 1.05rem) !important; }
+  .st b { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .st { padding: clamp(18px, 2.5vw, 28px) 10px; }
+  .ix h3 { font-size: clamp(1.15rem, 1.8vw, 1.65rem); }
+  .wy h3 { font-size: clamp(1.2rem, 2vw, 1.75rem); }
+  .wy em { font-size: clamp(1.75rem, 3vw, 2.5rem); width: auto; min-width: 2.5rem; }
+  .wy { padding: clamp(16px, 2.5vw, 24px) 0; }
+  .bs { height: clamp(72px, 10vw, 96px); }
+  .btn { min-height: 46px; padding: 0 clamp(20px, 2.5vw, 30px); font-size: 11px; }
+  #hero { padding: clamp(12px, 2vw, 28px) clamp(10px, 2vw, 24px) 0 !important; }
+  #hero [style*="padding:90px"] { padding: clamp(28px, 5vw, 56px) clamp(14px, 2.5vw, 28px) 0 !important; }
+  #hero [style*="margin:84px"] { margin: clamp(32px, 5vw, 56px) 0 0 !important; }
+  [style*="height:520px"] { height: clamp(240px, 32vw, 380px) !important; }
+  [style*="gap:80px"] { gap: clamp(28px, 4vw, 56px) !important; }
+  [style*="column-gap:96px"] { column-gap: clamp(20px, 4vw, 56px) !important; }
+  [style*="minmax(380px"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)) !important; }
+  [style*="minmax(340px"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important; }
+  [style*="margin-bottom:60px"] { margin-bottom: clamp(28px, 4vw, 48px) !important; }
+  [style*="margin-bottom:56px"] { margin-bottom: clamp(24px, 3.5vw, 40px) !important; }
+  [style*="padding:44px"] { padding: clamp(22px, 3vw, 36px) !important; }
+  footer.ft[style*="padding:80px"] { padding: clamp(40px, 6vw, 64px) 0 clamp(20px, 3vw, 32px) !important; }
+  [style*="font:italic 400 32px"] { font-size: clamp(1rem, 1.8vw, 1.35rem) !important; line-height: 1.45 !important; }
+  .top-bar { font-size: clamp(9px, 1.1vw, 11px) !important; letter-spacing: 0.22em !important; padding: 8px 12px !important; }
+  .hdr-nav a { font-size: clamp(9px, 1vw, 11px); letter-spacing: 0.14em; }
+  .hdr-logo img { height: clamp(56px, 8vw, 76px); }
+}
+
+@media (max-width: 900px) {
+  .hdr-row { gap: 16px 20px; }
+  .hdr-nav { gap: 12px 14px; }
+  .hdr-logo img { height: 64px; }
+  .cz { letter-spacing: 0.18em !important; }
+}
+
+@media (max-width: 960px) {
+  .hdr-nav { display: none; }
+  .hdr-row { justify-content: center; }
+  .hero-menu-btn { display: flex; }
+  #hero [style*="padding:90px"] { padding-top: clamp(56px, 12vw, 72px) !important; }
+}

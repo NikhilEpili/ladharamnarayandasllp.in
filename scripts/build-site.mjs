@@ -1,3 +1,8 @@
+/**
+ * Regenerates index.html from source/design-export.html.
+ * WARNING: Deletes assets/ except what the bundle extracts — backs up brands/ first.
+ * Prefer editing index.html + assets/css + assets/js directly (see README.md).
+ */
 import fs from "fs";
 import path from "path";
 import zlib from "zlib";
@@ -126,7 +131,7 @@ function toStaticHtml(template) {
 html { scroll-behavior: smooth; }
 select.in { appearance: none; cursor: pointer; }
 </style>
-<script src="assets/site.js" defer></script>
+<script src="assets/js/site.js" defer></script>
 `;
 
   html = html.replace("</head>", `${responsive}</head>`);
@@ -152,10 +157,20 @@ async function main() {
   const manifest = extractScript(html, "__bundler/manifest");
   let template = joinTemplate(extractScript(html, "__bundler/template"));
 
+  const brandsDir = path.join(ASSETS_DIR, "brands");
+  let brandsBackup = null;
+  if (fs.existsSync(brandsDir)) {
+    brandsBackup = fs.mkdtempSync(path.join(ROOT, ".brands-backup-"));
+    fs.cpSync(brandsDir, path.join(brandsBackup, "brands"), { recursive: true });
+  }
   if (fs.existsSync(ASSETS_DIR)) {
     fs.rmSync(ASSETS_DIR, { recursive: true });
   }
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
+  if (brandsBackup) {
+    fs.cpSync(path.join(brandsBackup, "brands"), brandsDir, { recursive: true });
+    fs.rmSync(brandsBackup, { recursive: true });
+  }
 
   for (const uuid of Object.keys(manifest)) {
     if (SKIP_UUID.has(uuid)) continue;
@@ -211,7 +226,8 @@ async function main() {
   });
 });
 `;
-  fs.writeFileSync(path.join(ASSETS_DIR, "site.js"), siteJs, "utf8");
+  fs.mkdirSync(path.join(ASSETS_DIR, "js"), { recursive: true });
+  fs.writeFileSync(path.join(ASSETS_DIR, "js", "site.js"), siteJs, "utf8");
 
   console.log("Built static site → index.html");
   console.log("Assets:", fs.readdirSync(ASSETS_DIR).join(", "));
