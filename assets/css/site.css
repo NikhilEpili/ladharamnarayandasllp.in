@@ -121,6 +121,7 @@ select.in { appearance: none; cursor: pointer; }
 @media (max-width: 960px) {
   .hdr-nav { display: none; }
   .hdr-row { justify-content: center; }
+  .hdr-logo img { height: clamp(96px, 26vw, 120px); width: auto; }
   .hero-menu-btn { display: flex; }
   #hero [style*="padding:90px"] { padding-top: clamp(56px, 12vw, 72px) !important; }
 }
