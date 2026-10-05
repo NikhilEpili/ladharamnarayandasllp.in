@@ -272,7 +272,7 @@
 body{margin:0;background:#F5ECD8}
 *{box-sizing:border-box}
 .w{max-width:1140px;margin:0 auto;padding:0 32px}
-.sec{padding:110px 0}
+.sec{padding:clamp(56px,8vw,88px) 0}
 .fd{font-family:'IM Fell English',Georgia,serif;font-weight:400;margin:0;line-height:1.1}
 .cz{font:600 12px Cinzel,serif;letter-spacing:.3em;text-transform:uppercase}
 .gd{color:#8A5E00}.dk .gd{color:#F5B318}
@@ -302,39 +302,83 @@ body{margin:0;background:#F5ECD8}
 .bs{height:110px;display:flex;align-items:center;justify-content:center;font:600 11px Cinzel,serif;letter-spacing:.22em;color:#8A5E00;border:1px solid #CDB98A}
 .lb{display:block;font:600 11px Cinzel,serif;letter-spacing:.24em;text-transform:uppercase;color:#173F0B}
 .in{width:100%;min-height:48px;padding:10px 2px;border:0;border-bottom:1px solid #8A7A4E;background:transparent;font:400 19px 'EB Garamond',serif;color:#173F0B;border-radius:0}
-.ft a{color:#E8DCC0;text-decoration:none;font:400 17px 'EB Garamond',serif}.ft a:hover{color:#F5B318}
-.hdr{background:#F5ECD8;padding:20px 0 0}
-.hdr-row{display:flex;align-items:center;justify-content:space-between;gap:24px 32px;flex-wrap:wrap;padding:12px 0}
+.ft a{color:#E8DCC0;text-decoration:none;font:400 17px 'DM Sans',system-ui,sans-serif}.ft a:hover{color:#F5B318}
+.ft-phone{white-space:nowrap;margin:0 0 10px}
+.ft-phone a{display:inline}
+.hdr{background:#F5ECD8;padding:20px 0 2px;margin-top:0}
+.hdr .dr{height:3px;border-top-width:1px;border-bottom-width:1px}
+.hdr-row{display:flex;align-items:center;justify-content:center;gap:28px 40px;flex-wrap:wrap;padding:2px 0;width:100%}
 .hdr-logo{display:flex;align-items:center;flex-shrink:0;line-height:0;text-decoration:none}
-.hdr-logo img{height:88px;width:auto;display:block}
-.hdr-nav{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:28px;flex-wrap:wrap;min-width:min(100%,280px)}
-.hdr-nav a{font:600 11px Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;color:#173F0B;text-decoration:none;padding:8px 4px;white-space:nowrap}
+.hdr-logo img{height:80px;width:auto;display:block}
+.hdr-nav{display:flex;justify-content:center;align-items:center;gap:24px 28px;flex-wrap:wrap}
+.hdr-nav a{font:600 11px Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;color:#173F0B;text-decoration:none;padding:2px 4px;white-space:nowrap}
 .hdr-nav a:hover{color:#8A5E00}
 .hdr-nav a.nav-cta{color:#8A5E00}
-.hdr-rules{padding-top:4px}
+.hdr-rules{padding:0;line-height:0}
+.why-visual{display:flex;flex-direction:column;min-height:100%}
+.why-logo-panel{flex:1;display:flex;align-items:center;justify-content:center;margin-top:28px;padding:clamp(24px,4vw,40px);min-height:320px;background:linear-gradient(180deg,#F5ECD8 0%,#EBDDBC 100%);border:1px solid #CDB98A;border-radius:4px}
+.why-logo{max-width:min(300px,85%);width:100%;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(23,63,11,.08))}
+.serve-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:1.35rem;row-gap:.85rem;padding:34px 0;margin:0}
+.serve-item{font:italic 400 clamp(1.05rem,1.9vw,1.65rem)/1.35 'Cormorant Garamond',Georgia,serif;color:#F5ECD8}
+.serve-item+.serve-item::before{content:"◆";display:inline-block;margin-right:1.35rem;color:#F5B318;font-style:normal;font-size:.42em;line-height:1;vertical-align:middle;transform:translateY(-.12em);font-family:'DM Sans',sans-serif}
 </style>
 
 <style>
-@media (max-width: 900px) {
-  .fd[style*="font-size:78px"] { font-size: clamp(2rem, 9vw, 3.25rem) !important; }
-  .fd[style*="font-size:56px"] { font-size: clamp(1.75rem, 6vw, 2.5rem) !important; }
-  .fd[style*="font-size:34px"] { font-size: clamp(1.35rem, 5vw, 2rem) !important; }
-  .sec { padding: 72px 0; }
-  .w { padding: 0 20px; }
-  .hdr-row { justify-content: center; }
-  .hdr-nav { justify-content: center; gap: 16px 20px; }
-  .hdr-logo img { height: 72px; }
-  .st b { font-size: 46px; }
-}
 html { scroll-behavior: smooth; }
+body { margin: 0; overflow-x: clip; background: #F5ECD8; }
+#top { width: 100%; min-height: 100%; }
 select.in { appearance: none; cursor: pointer; }
+
+/* Fluid layout for laptops and smaller desktops (no zoom — avoids side/bottom gaps) */
+@media (max-width: 1600px) {
+  .w { max-width: min(1140px, 94vw); padding: 0 clamp(16px, 2.5vw, 32px); }
+  .fd[style*="font-size:78px"] { font-size: clamp(2rem, 4.2vw, 3.25rem) !important; line-height: 1.12 !important; }
+  .fd[style*="font-size:56px"] { font-size: clamp(1.65rem, 3vw, 2.5rem) !important; }
+  .fd[style*="font-size:40px"] { font-size: clamp(1.4rem, 2.4vw, 2rem) !important; }
+  .fd[style*="font-size:34px"] { font-size: clamp(1.2rem, 2vw, 1.65rem) !important; }
+  .fd[style*="font-size:84px"] { font-size: clamp(2.25rem, 4.5vw, 3.5rem) !important; }
+  .fd[style*="font-size:32px"] { font-size: clamp(1.25rem, 2vw, 1.65rem) !important; }
+  .bd[style*="font-size:22px"] { font-size: clamp(1rem, 1.4vw, 1.2rem) !important; }
+  .bd[style*="font-size:18px"] { font-size: clamp(0.95rem, 1.2vw, 1.05rem) !important; }
+  .st b { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .st { padding: clamp(18px, 2.5vw, 28px) 10px; }
+  .ix h3 { font-size: clamp(1.15rem, 1.8vw, 1.65rem); }
+  .wy h3 { font-size: clamp(1.2rem, 2vw, 1.75rem); }
+  .wy em { font-size: clamp(1.75rem, 3vw, 2.5rem); width: auto; min-width: 2.5rem; }
+  .wy { padding: clamp(16px, 2.5vw, 24px) 0; }
+  .bs { height: clamp(72px, 10vw, 96px); }
+  .btn { min-height: 46px; padding: 0 clamp(20px, 2.5vw, 30px); font-size: 11px; }
+  #hero { padding: clamp(12px, 2vw, 28px) clamp(10px, 2vw, 24px) 0 !important; }
+  #hero [style*="padding:90px"] { padding: clamp(28px, 5vw, 56px) clamp(14px, 2.5vw, 28px) 0 !important; }
+  #hero [style*="margin:84px"] { margin: clamp(32px, 5vw, 56px) 0 0 !important; }
+  [style*="height:520px"] { height: clamp(240px, 32vw, 380px) !important; }
+  [style*="gap:80px"] { gap: clamp(28px, 4vw, 56px) !important; }
+  [style*="column-gap:96px"] { column-gap: clamp(20px, 4vw, 56px) !important; }
+  [style*="minmax(380px"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)) !important; }
+  [style*="minmax(340px"] { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important; }
+  [style*="margin-bottom:60px"] { margin-bottom: clamp(28px, 4vw, 48px) !important; }
+  [style*="margin-bottom:56px"] { margin-bottom: clamp(24px, 3.5vw, 40px) !important; }
+  [style*="padding:44px"] { padding: clamp(22px, 3vw, 36px) !important; }
+  footer.ft[style*="padding:80px"] { padding: clamp(40px, 6vw, 64px) 0 clamp(20px, 3vw, 32px) !important; }
+  [style*="font:italic 400 32px"] { font-size: clamp(1rem, 1.8vw, 1.35rem) !important; line-height: 1.45 !important; }
+  .top-bar { font-size: clamp(9px, 1.1vw, 11px) !important; letter-spacing: 0.22em !important; padding: 8px 12px !important; }
+  .hdr-nav a { font-size: clamp(9px, 1vw, 11px); letter-spacing: 0.14em; }
+  .hdr-logo img { height: clamp(56px, 8vw, 76px); }
+}
+
+@media (max-width: 900px) {
+  .hdr-row { gap: 16px 20px; }
+  .hdr-nav { gap: 12px 14px; }
+  .hdr-logo img { height: 64px; }
+  .cz { letter-spacing: 0.18em !important; }
+}
 </style>
 <script src="assets/site.js" defer></script>
 </head>
 <body>
-<div id="top" style="color:#173F0B;background:#F5ECD8;font-family:'EB Garamond',Georgia,serif" data-canvas-width="1360" data-canvas-height="4300">
+<div id="top" style="color:#173F0B;background:#F5ECD8;font-family:'EB Garamond',Georgia,serif">
 
-<div style="background:#173F0B;color:#F5B318;text-align:center;padding:10px 16px" class="cz">Established 1957 &nbsp;·&nbsp; Kirana &amp; General Stores &nbsp;·&nbsp; Now HoReCa Suppliers</div>
+<div class="top-bar cz" style="background:#173F0B;color:#F5B318;text-align:center;padding:10px 16px">Established 1957 &nbsp;·&nbsp; Kirana &amp; General Stores &nbsp;·&nbsp; Now HoReCa Suppliers</div>
 
 <header class="hdr">
 <div class="w hdr-rules"><div class="dr"></div></div>
@@ -413,19 +457,28 @@ select.in { appearance: none; cursor: pointer; }
 <h2 class="fd" style="font-size:56px;margin:0 auto 22px;max-width:760px">Supporting Mumbai’s Hospitality Industry</h2>
 <p class="bd" style="max-width:600px;margin:0 auto 40px">We supply essential food and beverage products to a diverse range of hospitality and food service businesses, including:</p>
 <div class="dr" style="border-color:#F5B318"></div>
-<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;padding:34px 0;font:italic 400 32px 'IM Fell English',serif">
-<span>Hotels and resorts</span><span class="gd">◆</span><span>Restaurants</span><span class="gd">◆</span><span>Cafés</span><span class="gd">◆</span><span>Caterers and banquet services</span><span class="gd">◆</span><span>Cloud kitchens</span><span class="gd">◆</span><span>Small retailers</span><span class="gd">◆</span><span>Institutional kitchens and food service businesses</span>
+<div class="serve-list">
+<span class="serve-item">Hotels and resorts</span>
+<span class="serve-item">Restaurants</span>
+<span class="serve-item">Cafés</span>
+<span class="serve-item">Caterers and banquet services</span>
+<span class="serve-item">Cloud kitchens</span>
+<span class="serve-item">Small retailers</span>
+<span class="serve-item">Institutional kitchens and food service businesses</span>
 </div>
 <div class="dr" style="border-color:#F5B318"></div>
 </div>
 </section>
 
 <section class="sec">
-<div class="w" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:80px">
-<div>
+<div class="w" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:80px;align-items:stretch">
+<div class="why-visual">
 <p class="cz gd" style="margin:0 0 18px">Why Choose Ladharam Narayandas LLP?</p>
 <h2 class="fd" style="font-size:56px">A Legacy of Trust, A Commitment to Quality</h2>
 <div class="orn" style="justify-content:flex-start;margin-top:28px"><b></b><i></i></div>
+<div class="why-logo-panel">
+<img class="why-logo" src="assets/logo.png" alt="Ladharam Narayandas LLP — Since 1957">
+</div>
 </div>
 <div style="border-top:1px solid #CDB98A">
 <div class="wy"><em>i.</em><div><h3>Decades of Legacy</h3><p class="bd" style="margin:0">A business heritage dating back to 1957.</p></div></div>
@@ -464,9 +517,9 @@ select.in { appearance: none; cursor: pointer; }
 <div class="w" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px">
 <div><p class="fd" style="font-size:32px;color:#F5ECD8;margin-bottom:12px">Ladharam Narayandas <span style="color:#F5B318">LLP</span></p><p class="cz gd" style="margin:0 0 12px;font-size:11px;line-height:1.8">Your Trusted HoReCa Supply Partner Since 1957</p><p class="bd" style="margin:0;font-size:17px">Supplying quality grocery essentials, food products, syrups and juices to hospitality businesses across Mumbai.</p></div>
 <div style="display:flex;flex-direction:column;gap:10px"><p class="cz gd" style="margin:0 0 6px">Quick Links</p><a href="#top">Home</a><a href="#about">About Us</a><a href="#categories">Product Categories</a><a href="#brands">Our Brands</a><a href="#contact">Contact Us</a></div>
-<div style="display:flex;flex-direction:column;gap:10px"><p class="cz gd" style="margin:0 0 6px">Contact</p><a href="tel:+918928351313">8928351313</a> · <a href="tel:+918976053099">8976053099</a><p class="bd" style="margin:0;font-size:17px">Ground Floor, Building No. R, Gala No. 10, 11, 12, Shree Rajlaxmi Complex, Kalher, Bhiwandi Thane, Maharashtra - 421302.</p><div style="display:flex;gap:22px"><a href="#">Instagram</a><a href="#">Facebook</a></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><p class="cz gd" style="margin:0 0 6px">Contact</p><p class="bd ft-phone" style="font-size:17px"><a href="tel:+918928351313">8928351313</a> / <a href="tel:+918976053099">8976053099</a></p><p class="bd" style="margin:0;font-size:17px">Ground Floor, Building No. R, Gala No. 10, 11, 12, Shree Rajlaxmi Complex, Kalher, Bhiwandi Thane, Maharashtra - 421302.</p><div style="display:flex;gap:22px"><a href="#">Instagram</a><a href="#">Facebook</a></div></div>
 </div>
 </footer>
-<p style="text-align:center;padding:20px 16px 28px;margin:0;font:400 14px 'EB Garamond',Georgia,serif;color:#8A7A4E;background:#0F2B07">Website designed by MB Creatives</p>
+<p style="text-align:center;padding:20px 16px 28px;margin:0;font:400 14px 'DM Sans',system-ui,sans-serif;color:#8A7A4E;background:#0F2B07">Website designed by MB Creatives</p>
 </div>
 </body></html>
