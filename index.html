@@ -322,9 +322,18 @@ body{margin:0;background:#F5ECD8}
 .hdr-nav a:hover{color:#8A5E00}
 .hdr-nav a.nav-cta{color:#8A5E00}
 .hdr-rules{padding:0;line-height:0}
+.hero-shell{position:relative}
+.hero-menu-btn{display:none;position:absolute;top:14px;left:14px;z-index:2;width:44px;height:44px;margin:0;padding:0;border:1px solid rgba(245,179,24,.55);border-radius:2px;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.hero-menu-btn span{display:block;width:20px;height:2px;background:#F5B318;border-radius:1px;transition:transform .2s ease,opacity .2s ease}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hero-menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:80px 24px 40px;background:rgba(23,63,11,.97);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.mobile-nav.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.mobile-nav a{font:600 13px Cinzel,serif;letter-spacing:.22em;text-transform:uppercase;color:#F5ECD8;text-decoration:none;padding:14px 20px;width:100%;max-width:320px;text-align:center;border:1px solid transparent;border-radius:2px}
+.mobile-nav a:hover,.mobile-nav a:focus-visible{color:#F5B318;border-color:rgba(245,179,24,.35);outline:none}
+.mobile-nav a.nav-cta{color:#F5B318;border-color:rgba(245,179,24,.45)}
 .why-visual{display:flex;flex-direction:column;min-height:100%}
-.why-logo-panel{flex:1;display:flex;align-items:center;justify-content:center;margin-top:28px;padding:clamp(24px,4vw,40px);min-height:320px;background:linear-gradient(180deg,#F5ECD8 0%,#EBDDBC 100%);border:1px solid #CDB98A;border-radius:4px}
-.why-logo{max-width:min(300px,85%);width:100%;height:auto;display:block;filter:drop-shadow(0 8px 24px rgba(23,63,11,.08))}
 .serve-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;column-gap:1.35rem;row-gap:.85rem;padding:34px 0;margin:0}
 .serve-item{font:italic 400 clamp(1.05rem,1.9vw,1.65rem)/1.35 'Cormorant Garamond',Georgia,serif;color:#F5ECD8}
 .serve-item+.serve-item::before{content:"◆";display:inline-block;margin-right:1.35rem;color:#F5B318;font-style:normal;font-size:.42em;line-height:1;vertical-align:middle;transform:translateY(-.12em);font-family:'DM Sans',sans-serif}
@@ -379,6 +388,13 @@ select.in { appearance: none; cursor: pointer; }
   .hdr-logo img { height: 64px; }
   .cz { letter-spacing: 0.18em !important; }
 }
+
+@media (max-width: 960px) {
+  .hdr-nav { display: none; }
+  .hdr-row { justify-content: center; }
+  .hero-menu-btn { display: flex; }
+  #hero [style*="padding:90px"] { padding-top: clamp(56px, 12vw, 72px) !important; }
+}
 </style>
 <script src="assets/site.js" defer></script>
 </head>
@@ -403,7 +419,17 @@ select.in { appearance: none; cursor: pointer; }
 </header>
 
 <section id="hero" class="dk" style="padding:44px 28px 0;background:#F5ECD8">
-<div style="background:#173F0B;color:#F5ECD8;padding:14px">
+<div class="hero-shell" style="background:#173F0B;color:#F5ECD8;padding:14px">
+<button type="button" class="hero-menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+<span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
+<nav id="mobile-nav" class="mobile-nav" aria-label="Main" hidden>
+<a href="#about">About Us</a>
+<a href="#categories">Product Categories</a>
+<a href="#brands">Our Brands</a>
+<a href="#contact">Contact Us</a>
+<a class="nav-cta" href="#enquiry">Enquire Now</a>
+</nav>
 <div style="border:1px solid #F5B318;padding:6px"><div style="border:1px solid rgba(245,179,24,.5);padding:90px 32px 0;text-align:center">
 <div style="width:116px;height:116px;margin:0 auto 34px;border:1px solid #F5B318;border-radius:50%;padding:6px"><div style="width:100%;height:100%;border:1px solid #F5B318;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#F5B318"><span class="cz" style="font-size:10px;letter-spacing:.3em">Est.</span><span class="fd" style="font-size:34px">1957</span></div></div>
 <h1 class="fd" style="font-size:78px;max-width:900px;margin:0 auto">Your Trusted <i style="color:#F5B318">HoReCa</i> Supply Partner Since 1957</h1>
@@ -490,9 +516,6 @@ select.in { appearance: none; cursor: pointer; }
 <p class="cz gd" style="margin:0 0 18px">Why Choose Ladharam Narayandas LLP?</p>
 <h2 class="fd" style="font-size:56px">A Legacy of Trust, A Commitment to Quality</h2>
 <div class="orn" style="justify-content:flex-start;margin-top:28px"><b></b><i></i></div>
-<div class="why-logo-panel">
-<img class="why-logo" src="assets/logo.png" alt="Ladharam Narayandas LLP — Since 1957">
-</div>
 </div>
 <div style="border-top:1px solid #CDB98A">
 <div class="wy"><em>i.</em><div><h3>Decades of Legacy</h3><p class="bd" style="margin:0">A business heritage dating back to 1957.</p></div></div>

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   initBrandMarquee();
+  initMobileNav();
 
   var form = document.querySelector("#enquiry form");
   if (!form) return;
@@ -25,6 +26,37 @@ document.addEventListener("DOMContentLoaded", function () {
     window.open(url, "_blank", "noopener,noreferrer");
   });
 });
+
+function initMobileNav() {
+  var btn = document.querySelector(".hero-menu-btn");
+  var nav = document.getElementById("mobile-nav");
+  if (!btn || !nav) return;
+
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    nav.hidden = !open;
+    nav.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
+  btn.addEventListener("click", function () {
+    setOpen(btn.getAttribute("aria-expanded") !== "true");
+  });
+
+  nav.querySelectorAll("a[href^='#']").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+}
 
 function initBrandMarquee() {
   var marquee = document.querySelector(".brand-marquee");
