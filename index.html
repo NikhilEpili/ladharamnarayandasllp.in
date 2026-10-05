@@ -303,6 +303,15 @@ body{margin:0;background:#F5ECD8}
 .lb{display:block;font:600 11px Cinzel,serif;letter-spacing:.24em;text-transform:uppercase;color:#173F0B}
 .in{width:100%;min-height:48px;padding:10px 2px;border:0;border-bottom:1px solid #8A7A4E;background:transparent;font:400 19px 'EB Garamond',serif;color:#173F0B;border-radius:0}
 .ft a{color:#E8DCC0;text-decoration:none;font:400 17px 'EB Garamond',serif}.ft a:hover{color:#F5B318}
+.hdr{background:#F5ECD8;padding:20px 0 0}
+.hdr-row{display:flex;align-items:center;justify-content:space-between;gap:24px 32px;flex-wrap:wrap;padding:12px 0}
+.hdr-logo{display:flex;align-items:center;flex-shrink:0;line-height:0;text-decoration:none}
+.hdr-logo img{height:88px;width:auto;display:block}
+.hdr-nav{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:28px;flex-wrap:wrap;min-width:min(100%,280px)}
+.hdr-nav a{font:600 11px Cinzel,serif;letter-spacing:.18em;text-transform:uppercase;color:#173F0B;text-decoration:none;padding:8px 4px;white-space:nowrap}
+.hdr-nav a:hover{color:#8A5E00}
+.hdr-nav a.nav-cta{color:#8A5E00}
+.hdr-rules{padding-top:4px}
 </style>
 
 <style>
@@ -312,7 +321,9 @@ body{margin:0;background:#F5ECD8}
   .fd[style*="font-size:34px"] { font-size: clamp(1.35rem, 5vw, 2rem) !important; }
   .sec { padding: 72px 0; }
   .w { padding: 0 20px; }
-  .nv { gap: 16px !important; }
+  .hdr-row { justify-content: center; }
+  .hdr-nav { justify-content: center; gap: 16px 20px; }
+  .hdr-logo img { height: 72px; }
   .st b { font-size: 46px; }
 }
 html { scroll-behavior: smooth; }
@@ -325,14 +336,22 @@ select.in { appearance: none; cursor: pointer; }
 
 <div style="background:#173F0B;color:#F5B318;text-align:center;padding:10px 16px" class="cz">Established 1957 &nbsp;·&nbsp; Kirana &amp; General Stores &nbsp;·&nbsp; Now HoReCa Suppliers</div>
 
-<header style="padding:26px 0 0;text-align:center">
-<a href="#top" aria-label="Ladharam Narayandas LLP home"><img src="assets/logo.jpg" alt="Ladharam Narayandas LLP – Since 1957" style="height:132px;width:auto;mix-blend-mode:multiply"></a>
-<div class="w" style="padding-top:18px"><div class="dr"></div>
-<nav class="nv" style="display:flex;justify-content:center;gap:34px;flex-wrap:wrap;padding:6px 0"><a href="#about">About Us</a><a href="#categories">Product Categories</a><a href="#brands">Our Brands</a><a href="#contact">Contact Us</a><a href="#enquiry" style="color:#8A5E00">Enquire Now</a></nav>
-<div class="dr"></div></div>
+<header class="hdr">
+<div class="w hdr-rules"><div class="dr"></div></div>
+<div class="w hdr-row">
+<a class="hdr-logo" href="#hero" aria-label="Ladharam Narayandas LLP home"><img src="assets/logo.png" alt="Ladharam Narayandas LLP – Since 1957"></a>
+<nav class="hdr-nav" aria-label="Main">
+<a href="#about">About Us</a>
+<a href="#categories">Product Categories</a>
+<a href="#brands">Our Brands</a>
+<a href="#contact">Contact Us</a>
+<a class="nav-cta" href="#enquiry">Enquire Now</a>
+</nav>
+</div>
+<div class="w hdr-rules"><div class="dr"></div></div>
 </header>
 
-<section id="top" class="dk" style="padding:44px 28px 0;background:#F5ECD8">
+<section id="hero" class="dk" style="padding:44px 28px 0;background:#F5ECD8">
 <div style="background:#173F0B;color:#F5ECD8;padding:14px">
 <div style="border:1px solid #F5B318;padding:6px"><div style="border:1px solid rgba(245,179,24,.5);padding:90px 32px 0;text-align:center">
 <div style="width:116px;height:116px;margin:0 auto 34px;border:1px solid #F5B318;border-radius:50%;padding:6px"><div style="width:100%;height:100%;border:1px solid #F5B318;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#F5B318"><span class="cz" style="font-size:10px;letter-spacing:.3em">Est.</span><span class="fd" style="font-size:34px">1957</span></div></div>
