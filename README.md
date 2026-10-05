@@ -67,6 +67,7 @@ Requires **Python 3** with [Pillow](https://pypi.org/project/pillow/) for image 
 | Command | Script | Purpose |
 |---------|--------|---------|
 | `npm run assets:logo` | `scripts/prepare-logo.py` | Flood-fill logo background → transparent (matches `#F5ECD8`) |
+| `npm run assets:optimize` | `scripts/optimize-images.py` | Resize/compress logo + brand PNGs (run after replacing images) |
 | `npm run assets:brands:crop` | `scripts/crop-brand-logos.py` | Crop brand PNGs |
 | `npm run assets:brands:trim` | `scripts/trim-brand-logos.py` | Trim empty margins on brand PNGs |
 | `npm run assets:brands:strip` | `scripts/make-brand-strip.py` | Build composite brand strip |

@@ -74,10 +74,31 @@ function initMobileNav() {
 function initBrandMarquee() {
   var marquee = document.querySelector(".brand-marquee");
   if (!marquee) return;
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        if (!entries.some(function (e) {
+          return e.isIntersecting;
+        })) {
+          return;
+        }
+        io.disconnect();
+        bootBrandMarquee(marquee);
+      },
+      { rootMargin: "240px 0px" }
+    );
+    io.observe(marquee);
+    return;
+  }
+  bootBrandMarquee(marquee);
+}
+
+function bootBrandMarquee(marquee) {
   var track = marquee.querySelector(".brand-marquee__track");
   var set = marquee.querySelector(".brand-marquee__set");
   if (!track || !set) return;
 
+  ensureMarqueeClone(track, set);
   track.querySelectorAll(".brand-marquee__set").forEach(wrapMarqueeLogos);
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -156,6 +177,17 @@ function initBrandMarquee() {
   track.querySelectorAll("img").forEach(function (img) {
     if (!img.complete) img.addEventListener("load", boot, { once: true });
   });
+}
+
+function ensureMarqueeClone(track, set) {
+  if (track.querySelectorAll(".brand-marquee__set").length > 1) return;
+  var clone = set.cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  clone.querySelectorAll("img").forEach(function (img) {
+    img.alt = "";
+    img.removeAttribute("loading");
+  });
+  track.appendChild(clone);
 }
 
 function wrapMarqueeLogos(setEl) {

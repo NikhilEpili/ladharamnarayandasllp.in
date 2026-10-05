@@ -5,6 +5,7 @@
   "scripts": {
     "build:from-export": "node scripts/build-site.mjs",
     "assets:logo": "python scripts/prepare-logo.py",
+    "assets:optimize": "python scripts/optimize-images.py",
     "assets:brands:crop": "python scripts/crop-brand-logos.py",
     "assets:brands:trim": "python scripts/trim-brand-logos.py",
     "assets:brands:strip": "python scripts/make-brand-strip.py"
