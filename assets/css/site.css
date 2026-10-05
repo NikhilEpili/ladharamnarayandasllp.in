@@ -38,9 +38,13 @@ body{margin:0;background:#F5ECD8}
 @media (prefers-reduced-motion:reduce){.brand-marquee{overflow-x:auto}}
 .lb{display:block;font:600 11px Cinzel,serif;letter-spacing:.24em;text-transform:uppercase;color:#173F0B}
 .in{width:100%;min-height:48px;padding:10px 2px;border:0;border-bottom:1px solid #8A7A4E;background:transparent;font:400 19px 'EB Garamond',serif;color:#173F0B;border-radius:0}
-.ft a{color:#E8DCC0;text-decoration:none;font:400 17px 'DM Sans',system-ui,sans-serif}.ft a:hover{color:#F5B318}
-.ft-phone{white-space:nowrap;margin:0 0 10px}
-.ft-phone a{display:inline}
+.ft .bd{font-size:17px;line-height:1.65}
+.ft a{color:#E8DCC0;text-decoration:none;font:400 17px/1.65 'EB Garamond',Georgia,serif}.ft a:hover{color:#F5B318}
+.ft-col{display:flex;flex-direction:column;gap:10px}
+.ft-col a{line-height:1.65}
+.ft-phone{white-space:nowrap;margin:0 0 10px;font-size:17px;line-height:1.65}
+.ft-phone a{display:inline;font:inherit;color:inherit}
+.ft-phone a:hover{color:#F5B318}
 .hdr{background:#F5ECD8;padding:20px 0 2px;margin-top:0}
 .hdr .dr{height:3px;border-top-width:1px;border-bottom-width:1px}
 .hdr-row{display:flex;align-items:center;justify-content:center;gap:28px 40px;flex-wrap:wrap;padding:2px 0;width:100%}
