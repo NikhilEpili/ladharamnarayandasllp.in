@@ -9,11 +9,12 @@ Static single-page site for [ladharamnarayandasllp.in](https://ladharamnarayanda
 ├── CNAME                   # Custom domain for GitHub Pages
 ├── assets/
 │   ├── css/
-│   │   ├── fonts.css       # @font-face declarations (self-hosted + Google fallbacks)
+│   │   ├── fonts.css       # Self-hosted Cinzel + EB Garamond (Latin)
 │   │   └── site.css        # Layout, components, responsive rules, mobile nav
 │   ├── js/
 │   │   └── site.js         # Brand marquee, mobile menu, enquiry → WhatsApp
 │   ├── brands/             # Individual partner logos (PNG)
+│   ├── icons/              # Line SVGs for category & serve tiles
 │   ├── logo.png            # Header logo (transparent background)
 │   └── …                   # Fonts, trusted-brands strip, etc.
 ├── source/
@@ -53,6 +54,7 @@ Custom domain DNS (apex + `www`) must point at GitHub Pages; see [GitHub’s cus
 | Colors, typography, header, marquee, breakpoints | `assets/css/site.css` |
 | Mobile menu, form → WhatsApp, marquee logic | `assets/js/site.js` |
 | Header logo file | Replace `assets/logo.png`, then run `npm run assets:logo` if the file has a solid background |
+| Team / category photos | Drop images into `.media-slot` (About) or add `.cat-card__media` later—see `assets/css/site.css` |
 
 ### Navigation anchors
 

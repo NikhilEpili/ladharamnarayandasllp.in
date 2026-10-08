@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initEnquiryForm() {
-  var form = document.querySelector("#enquiry form");
-  if (!form) return;
+  var form = document.getElementById("enquiry");
+  if (!form || form.tagName !== "FORM") return;
   var btn = form.querySelector('button[type="button"]');
   if (!btn) return;
   btn.addEventListener("click", function () {
