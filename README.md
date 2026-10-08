@@ -53,6 +53,7 @@ Custom domain DNS (apex + `www`) must point at GitHub Pages; see [GitHub’s cus
 | Copy, section order, IDs for nav anchors | `index.html` |
 | Colors, typography, header, marquee, breakpoints | `assets/css/site.css` |
 | Mobile menu, form → WhatsApp, marquee logic | `assets/js/site.js` |
+| Scroll/split text motion | `assets/css/motion.css`, `initMotion()` in `assets/js/site.js` |
 | Header logo file | Replace `assets/logo.png`, then run `npm run assets:logo` if the file has a solid background |
 | Team / category photos | Drop images into `.media-slot` (About) or add `.cat-card__media` later—see `assets/css/site.css` |
 
@@ -82,9 +83,8 @@ Requires **Python 3** with [Pillow](https://pypi.org/project/pillow/) for image 
 | Token | Hex | Usage |
 |-------|-----|--------|
 | Page background | `#F5ECD8` | Body, header |
-| Green surfaces | `#E8F0EB`, `#DCE8DF` | Hero, top bar, who we serve |
-| Text green | `#3D5C48` | Headings, nav |
-| Accent gold | `#F5B318` | CTAs, highlights |
+| Primary green | `#173F0B` | Hero panel, top bar |
+| Accent gold | `#F5B318` | CTAs, ornaments |
 
 ## Contributing
 

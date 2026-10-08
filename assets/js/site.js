@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initBrandMarquee();
   initMobileNav();
   initEnquiryForm();
+  initMotion();
 });
 
 function initEnquiryForm() {
@@ -223,4 +224,154 @@ function whenMarqueeImagesReady(root, cb) {
     img.addEventListener("error", done, { once: true });
   });
   setTimeout(cb, 2500);
+}
+
+function initMotion() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll(".split-text").forEach(function (el) {
+      el.classList.add("is-played");
+    });
+    document
+      .querySelectorAll(".reveal, .reveal-fade, .reveal-group, .hero-stats, .brands-frame, .section-head")
+      .forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    return;
+  }
+
+  document.querySelectorAll(".split-text").forEach(prepareSplitText);
+  indexRevealGroups();
+  observeMotion();
+  playHeroMotion();
+}
+
+function prepareSplitText(el) {
+  if (el.dataset.splitReady === "1") return;
+  var mode = el.getAttribute("data-split") || "rise";
+  var label = el.textContent.replace(/\s+/g, " ").trim();
+  el.setAttribute("aria-label", label);
+  el.dataset.splitReady = "1";
+
+  var index = 0;
+  var source = Array.prototype.slice.call(el.childNodes);
+  var frag = document.createDocumentFragment();
+
+  function appendWord(text, accent) {
+    if (!text) return;
+    if (mode === "fold") {
+      for (var c = 0; c < text.length; c++) {
+        var ch = document.createElement("span");
+        ch.className = accent ? "split-char split-char--accent" : "split-char";
+        ch.style.setProperty("--i", index++);
+        ch.textContent = text.charAt(c);
+        ch.setAttribute("aria-hidden", "true");
+        frag.appendChild(ch);
+      }
+      return;
+    }
+    var wrap = document.createElement("span");
+    wrap.className = "split-word";
+    var inner = document.createElement("span");
+    inner.className = accent ? "split-word-inner split-word--accent" : "split-word-inner";
+    inner.style.setProperty("--i", index++);
+    inner.textContent = text;
+    inner.setAttribute("aria-hidden", "true");
+    wrap.appendChild(inner);
+    frag.appendChild(wrap);
+  }
+
+  source.forEach(function (node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      var parts = node.textContent.split(/(\s+)/);
+      parts.forEach(function (part) {
+        if (/^\s+$/.test(part)) {
+          var gap = document.createElement("span");
+          gap.className = "split-word--gap";
+          gap.textContent = part;
+          gap.setAttribute("aria-hidden", "true");
+          frag.appendChild(gap);
+        } else if (part) {
+          appendWord(part, false);
+        }
+      });
+    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "EM") {
+      appendWord(node.textContent.trim(), true);
+    }
+  });
+
+  if (!frag.childNodes.length) {
+    appendWord(label, false);
+  }
+
+  el.textContent = "";
+  el.appendChild(frag);
+}
+
+function indexRevealGroups() {
+  document.querySelectorAll(".reveal-group").forEach(function (group) {
+    Array.prototype.forEach.call(group.children, function (child, i) {
+      child.style.setProperty("--i", i);
+    });
+  });
+  document.querySelectorAll(".hero-stats .st").forEach(function (st, i) {
+    st.style.setProperty("--i", i);
+  });
+}
+
+function observeMotion() {
+  if (!("IntersectionObserver" in window)) {
+    document
+      .querySelectorAll(".split-text, .reveal, .reveal-fade, .reveal-group, .hero-stats, .brands-frame, .section-head")
+      .forEach(function (el) {
+        el.classList.add("is-visible");
+        el.classList.add("is-played");
+      });
+    return;
+  }
+
+  var io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var target = entry.target;
+        if (target.classList.contains("split-text")) {
+          target.classList.add("is-played");
+        } else {
+          target.classList.add("is-visible");
+        }
+        io.unobserve(target);
+      });
+    },
+    { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+  );
+
+  document.querySelectorAll(".split-text").forEach(function (el) {
+    io.observe(el);
+  });
+  document.querySelectorAll(".reveal, .reveal-fade, .reveal-group, .hero-stats, .brands-frame, .section-head").forEach(function (el) {
+    io.observe(el);
+  });
+}
+
+function playHeroMotion() {
+  var heroTitle = document.querySelector("#hero .split-text");
+  var heroLead = document.querySelector(".hero-lead");
+  var heroActions = document.querySelector(".hero-actions");
+  var heroStats = document.querySelector(".hero-stats");
+
+  window.requestAnimationFrame(function () {
+    if (heroTitle) heroTitle.classList.add("is-played");
+    if (heroLead) {
+      heroLead.classList.add("reveal", "is-visible");
+    }
+    if (heroActions) {
+      heroActions.classList.add("reveal", "is-visible");
+      heroActions.style.setProperty("--reveal-delay", "120ms");
+    }
+    if (heroStats) {
+      setTimeout(function () {
+        heroStats.classList.add("is-visible");
+      }, 280);
+    }
+  });
 }
