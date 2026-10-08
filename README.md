@@ -82,8 +82,9 @@ Requires **Python 3** with [Pillow](https://pypi.org/project/pillow/) for image 
 | Token | Hex | Usage |
 |-------|-----|--------|
 | Page background | `#F5ECD8` | Body, header |
-| Primary green | `#173F0B` | Hero panel, top bar |
-| Accent gold | `#F5B318` | CTAs, ornaments |
+| Green surfaces | `#E8F0EB`, `#DCE8DF` | Hero, top bar, who we serve |
+| Text green | `#3D5C48` | Headings, nav |
+| Accent gold | `#F5B318` | CTAs, highlights |
 
 ## Contributing
 
