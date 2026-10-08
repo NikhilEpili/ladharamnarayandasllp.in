@@ -47,7 +47,7 @@
 
 .split-text .split-word-inner.split-word--accent,
 .split-char--accent {
-  color: var(--color-gold);
+  color: var(--gold, #e3a62b);
 }
 
 .reveal {
