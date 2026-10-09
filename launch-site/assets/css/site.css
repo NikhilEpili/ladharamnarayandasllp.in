@@ -200,7 +200,7 @@ p {
 }
 
 .site-chrome-spacer {
-  height: var(--site-chrome-height, 7rem);
+  height: var(--site-chrome-height, 4.5rem);
   pointer-events: none;
   transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -210,25 +210,6 @@ p {
   .site-chrome-spacer {
     transition: none;
   }
-}
-
-.top-bar {
-  background: var(--green-deep);
-  color: #dce8d5;
-  font-size: clamp(0.75rem, 2vw, 0.8125rem);
-  font-weight: 500;
-}
-
-.top-bar__inner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding-block: 0.5625rem;
-}
-
-.top-bar__tagline {
-  line-height: 1.45;
 }
 
 .site-header {
@@ -487,22 +468,18 @@ p {
   left: clamp(-0.5rem, -2vw, -1.375rem);
   bottom: clamp(1rem, 4vw, 1.75rem);
   background: #fff;
-  border-radius: var(--radius);
-  padding: 1rem 1.375rem;
+  border-radius: 0.75rem;
+  padding: 0.5625rem 0.9375rem;
   box-shadow: var(--shadow-float);
 }
 
-.hero-stat-card b {
-  font-size: clamp(1.5rem, 4vw, 1.875rem);
-  color: var(--green);
-  display: block;
-  line-height: 1;
-}
-
 .hero-stat-card span {
-  font-size: 0.8125rem;
-  color: var(--muted);
-  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .hero-stats-bar {
@@ -527,6 +504,7 @@ p {
   color: var(--gold);
   display: block;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .hero-stats .st span {
@@ -567,57 +545,53 @@ p {
   flex-shrink: 0;
 }
 
-/* Category marquee */
-.categories-frame,
-.brands-frame {
+/* Product categories grid */
+.categories-frame {
   width: 100%;
   max-width: 100%;
+}
+
+.brands-frame {
+  width: calc(100% + 2 * var(--pad-x));
+  max-width: none;
+  margin-inline: calc(-1 * var(--pad-x));
   overflow: hidden;
 }
 
-.cat-marquee {
-  --cat-marquee-gap: clamp(0.625rem, 1.2vw, 1rem);
-  --cat-marquee-card: clamp(10.5rem, 22vw, 11.5rem);
-  overflow: hidden;
-  overflow: clip;
-  width: 100%;
-  padding: 0.5rem 0 0.75rem;
-  touch-action: pan-y;
-  isolation: isolate;
-}
-
-.cat-marquee__track {
-  display: flex;
-  align-items: stretch;
-  gap: var(--cat-marquee-gap);
-  width: max-content;
-  will-change: transform;
-  transform: translate3d(var(--cat-marquee-x, 0px), 0, 0);
-}
-
-.cat-marquee__set {
+.cat-grid {
+  --cat-grid-gap: clamp(0.625rem, 1.2vw, 1rem);
   list-style: none;
   margin: 0;
-  padding: 0;
-  display: flex;
-  gap: var(--cat-marquee-gap);
-  flex-shrink: 0;
+  padding: 0.5rem 0 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cat-grid-gap);
+  width: 100%;
 }
 
-.cat-marquee__set .cat-card {
-  flex: 0 0 var(--cat-marquee-card);
-  width: var(--cat-marquee-card);
+@media (min-width: 40rem) {
+  .cat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-.cat-card {
+@media (min-width: 64rem) {
+  .cat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.cat-grid .cat-card {
   margin: 0;
   min-height: 0;
+  display: flex;
 }
 
 .cat-card__link {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  min-height: 100%;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -633,8 +607,9 @@ p {
 }
 
 .cat-card__media {
-  flex: 1;
-  min-height: clamp(5.5rem, 14vw, 8.125rem);
+  flex: 1 1 auto;
+  aspect-ratio: 4 / 3;
+  min-height: clamp(5.5rem, 14vw, 7.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -711,15 +686,15 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-marquee,
-  .cat-marquee {
+  .brand-marquee {
     overflow-x: auto;
   }
 }
 
 /* Who we serve */
 .sec-serve {
-  background: var(--bg);
+  background: var(--bg-hero);
+  border-block: 1px solid var(--border);
 }
 
 .serve-layout {
@@ -776,13 +751,24 @@ p {
   box-shadow: 0 1px 3px rgba(20, 51, 14, 0.04);
 }
 
-.serve-layout .chip::before {
-  content: "";
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
-  background: var(--gold);
+.serve-layout .chip__icon {
   flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serve-layout .chip__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.serve-layout .chip__label {
+  min-width: 0;
 }
 
 .serve-layout .chip--wide {

@@ -7,7 +7,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-LOGO = ROOT / "assets" / "logo.png"
+LOGO = ROOT / "launch-site" / "assets" / "logo.png"
 TOLERANCE = 22
 
 

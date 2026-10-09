@@ -3,8 +3,8 @@ from pathlib import Path
 from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "assets" / "trusted-brands.png"
-OUT = ROOT / "assets" / "brands"
+SRC = ROOT / "launch-site" / "assets" / "trusted-brands.png"
+OUT = ROOT / "launch-site" / "assets" / "brands"
 SLUGS = [
     "sarwar", "testo", "monin", "manama", "meal-time", "everest", "mdh",
     "unilever", "lee-kum-kee", "vkl", "samrat", "society", "gowardhan",

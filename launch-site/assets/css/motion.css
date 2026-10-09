@@ -249,7 +249,6 @@
 }
 
 .brands-frame,
-.categories-frame,
 .why-rows {
   opacity: 0;
   transform: translate3d(0, 20px, 0);
@@ -259,7 +258,6 @@
 }
 
 .brands-frame.is-visible,
-.categories-frame.is-visible,
 .why-rows.is-visible {
   opacity: 1;
   transform: none;
@@ -289,7 +287,6 @@
   .hero-stats .st,
   .hero-badge,
   .brands-frame,
-  .categories-frame,
   .why-rows,
   .section-rule,
   .chrome-load,

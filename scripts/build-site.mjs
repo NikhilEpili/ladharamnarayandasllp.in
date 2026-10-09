@@ -10,8 +10,9 @@ import { promisify } from "util";
 
 const gunzip = promisify(zlib.gunzip);
 const ROOT = path.resolve(import.meta.dirname, "..");
+const SITE_DIR = path.join(ROOT, "launch-site");
 const BUNDLE = path.join(ROOT, "source", "design-export.html");
-const ASSETS_DIR = path.join(ROOT, "assets");
+const ASSETS_DIR = path.join(SITE_DIR, "assets");
 
 const ASSET_MAP = {
   "3cf73a2e-8259-4e5f-af37-86daf95b0677": "logo.jpg",
@@ -181,7 +182,7 @@ async function main() {
     const name =
       ASSET_MAP[uuid] || `${uuid}${extForMime(mime)}`;
     const rel = `assets/${name}`;
-    fs.writeFileSync(path.join(ROOT, rel), bytes);
+    fs.writeFileSync(path.join(SITE_DIR, rel), bytes);
 
     template = template.split(uuid).join(rel.replace(/\\/g, "/"));
   }
@@ -198,7 +199,7 @@ async function main() {
 
   template = toStaticHtml(template);
 
-  fs.writeFileSync(path.join(ROOT, "index.html"), template, "utf8");
+  fs.writeFileSync(path.join(SITE_DIR, "index.html"), template, "utf8");
 
   const siteJs = `document.addEventListener("DOMContentLoaded", function () {
   var form = document.querySelector("#enquiry form");

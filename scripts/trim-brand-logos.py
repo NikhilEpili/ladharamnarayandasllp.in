@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image, ImageChops
 
-BRANDS = Path(__file__).resolve().parents[1] / "assets" / "brands"
+BRANDS = Path(__file__).resolve().parents[1] / "launch-site" / "assets" / "brands"
 
 
 def trim(im: Image.Image) -> Image.Image:

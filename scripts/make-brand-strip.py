@@ -41,6 +41,6 @@ for i, name in enumerate(BRANDS):
     tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     draw.text((x + (cw - tw) / 2, y + (ch - th) / 2), name, fill=TEXT, font=f)
 
-out = __import__("pathlib").Path(__file__).resolve().parents[1] / "assets" / "trusted-brands.png"
+out = __import__("pathlib").Path(__file__).resolve().parents[1] / "launch-site" / "assets" / "trusted-brands.png"
 img.save(out, "PNG")
 print("Wrote", out)
