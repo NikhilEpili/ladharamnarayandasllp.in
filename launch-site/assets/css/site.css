@@ -577,7 +577,17 @@ p {
 
 @media (min-width: 64rem) {
   .cat-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .cat-card__media {
+    min-height: clamp(4.25rem, 7vw, 5.75rem);
+    padding: 0.5rem;
+  }
+
+  .cat-card__foot {
+    padding: 0.625rem 0.625rem;
+    font-size: clamp(0.75rem, 0.85vw, 0.875rem);
   }
 }
 
