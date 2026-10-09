@@ -70,14 +70,14 @@ p {
 
 .heading-xl {
   font-size: clamp(2rem, 5vw + 0.5rem, 3.75rem);
-  line-height: 1.06;
+  line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.035em;
 }
 
 .heading-lg {
   font-size: clamp(1.65rem, 3vw + 0.25rem, 2.625rem);
-  line-height: 1.12;
+  line-height: 1.18;
   font-weight: 800;
   letter-spacing: -0.025em;
 }

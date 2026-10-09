@@ -12,6 +12,7 @@ Static site for Ladharam Narayandas LLP, hosted on **GitHub Pages** from the `ma
 ```
 ├── index.html              # Coming soon (apex .in homepage)
 ├── coming-soon.html        # Redirects to / (legacy bookmark)
+├── assets/                 # Logo + favicons for the coming soon page only
 ├── favicon.ico
 ├── launch-site/            # Full website
 │   ├── index.html          # Page markup (sections, content)
@@ -72,6 +73,7 @@ The repo includes `launch-site/sw.js` (stale-while-revalidate for assets), `robo
 |------|----------------|
 | Copy, section order, IDs for nav anchors | `launch-site/index.html` |
 | Coming soon copy / contact | Root `index.html` |
+| Coming soon logo / tab icons | Root `assets/` (synced when you run `npm run assets:favicons`) |
 | Colors, typography, header, marquee, breakpoints | `launch-site/assets/css/site.css` |
 | Mobile menu, form → WhatsApp, marquee logic | `launch-site/assets/js/site.js` |
 | Scroll/split text motion | `launch-site/assets/css/motion.css`, `initMotion()` in `launch-site/assets/js/site.js` |

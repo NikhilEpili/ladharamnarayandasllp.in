@@ -9,6 +9,10 @@
   white-space: pre;
   overflow: hidden;
   vertical-align: top;
+  /* Room for descenders (y, g, j, p, q) inside the rise clip */
+  line-height: 1.2;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .split-word--gap {
