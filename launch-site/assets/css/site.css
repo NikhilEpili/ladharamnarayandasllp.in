@@ -53,12 +53,36 @@ body {
 #top {
   min-height: 100%;
   color: var(--text);
+  text-align: start;
 }
 
 .w {
   max-width: var(--max-w);
   margin-inline: auto;
   padding-inline: var(--pad-x);
+}
+
+/* Shared left-aligned section copy (headings, intros, split-text) */
+.hero,
+.sec {
+  text-align: start;
+}
+
+.section-head,
+.about-intro,
+.serve-copy,
+.contact-info,
+.enquiry-head {
+  width: 100%;
+  max-width: none;
+  text-align: start;
+}
+
+.section-head__main,
+.section-head__aside {
+  min-width: 0;
+  max-width: none;
+  text-align: start;
 }
 
 h1,
@@ -129,7 +153,6 @@ p {
   color: var(--footer-text);
   line-height: 1.75;
   font-size: 1rem;
-  max-width: 44rem;
 }
 
 /* Buttons */
@@ -429,7 +452,6 @@ p {
 
 .hero__lead {
   font-size: clamp(1rem, 2vw, 1.125rem);
-  max-width: 32.5rem;
   margin-bottom: 2.125rem;
 }
 
@@ -523,22 +545,28 @@ p {
 .section-head--split {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1.5rem 2rem;
-}
-
-.section-head__main {
-  max-width: 40rem;
+  gap: 1.25rem 2rem;
 }
 
 .section-head__aside {
-  max-width: 26.25rem;
   margin: 0;
 }
 
 .section-head--brands {
-  align-items: flex-end;
+  align-items: flex-start;
+}
+
+@media (min-width: 48rem) {
+  .section-head--split .section-head__main {
+    flex: 1 1 28rem;
+  }
+
+  .section-head--split .section-head__aside {
+    flex: 1 1 16rem;
+    max-width: 24rem;
+  }
 }
 
 .section-head--brands .btn {
@@ -712,6 +740,7 @@ p {
   grid-template-columns: minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 3.5rem);
   align-items: start;
+  justify-items: stretch;
 }
 
 @media (min-width: 48rem) {
@@ -721,18 +750,12 @@ p {
   }
 }
 
-.serve-copy {
-  text-align: left;
-  max-width: 26rem;
-}
-
 .serve-copy .heading-lg {
   margin-bottom: 1.125rem;
 }
 
 .serve-copy__lead {
   margin: 0;
-  max-width: 22rem;
 }
 
 .serve-layout .chip-grid {

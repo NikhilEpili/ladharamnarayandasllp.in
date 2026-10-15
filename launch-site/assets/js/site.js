@@ -426,7 +426,7 @@ function initMotion() {
 function prepareSplitText(el) {
   if (el.dataset.splitReady === "1") return;
   var mode = el.getAttribute("data-split") || "rise";
-  var label = el.textContent.replace(/\s+/g, " ").trim();
+  var label = el.textContent.replace(/\s+/g, " ").replace(/,\s*/g, ", ").trim();
   el.setAttribute("aria-label", label);
   el.dataset.splitReady = "1";
 
@@ -472,6 +472,8 @@ function prepareSplitText(el) {
           appendWord(part, false);
         }
       });
+    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
+      frag.appendChild(document.createElement("br"));
     } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "EM") {
       appendWord(node.textContent.trim(), true);
     }

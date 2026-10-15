@@ -1,12 +1,29 @@
 /* Scroll & text motion — disabled when user prefers reduced motion */
 
 .split-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  column-gap: 0.28em;
+  row-gap: 0.05em;
+  width: 100%;
+  max-width: 100%;
+  text-align: start;
   perspective: 800px;
+}
+
+/* Manual line breaks (e.g. About heading) */
+.split-text br {
+  flex-basis: 100%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .split-word {
   display: inline-block;
-  white-space: pre;
+  white-space: nowrap;
   overflow: hidden;
   vertical-align: top;
   /* Room for descenders (y, g, j, p, q) inside the rise clip */
@@ -15,9 +32,11 @@
   margin-bottom: -0.14em;
 }
 
+/* Spaces are handled by flex column-gap — hide gaps so they never wrap alone and indent the next line */
 .split-word--gap {
-  display: inline;
-  white-space: pre;
+  display: none;
+  width: 0;
+  overflow: hidden;
 }
 
 .split-word-inner {
