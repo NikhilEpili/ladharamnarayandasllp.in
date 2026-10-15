@@ -176,6 +176,7 @@ function initEnquiryForm() {
 function initMobileNav() {
   var btn = document.querySelector(".hero-menu-btn");
   var nav = document.getElementById("mobile-nav");
+  var closeBtn = nav && nav.querySelector(".mobile-nav-close");
   if (!btn || !nav) return;
 
   nav.removeAttribute("hidden");
@@ -197,6 +198,14 @@ function initMobileNav() {
     e.stopPropagation();
     toggleMenu();
   });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(false);
+      btn.focus();
+    });
+  }
 
   nav.querySelectorAll("a[href^='#']").forEach(function (link) {
     link.addEventListener("click", function () {

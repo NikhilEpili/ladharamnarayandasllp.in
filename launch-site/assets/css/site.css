@@ -349,13 +349,9 @@ p {
 .mobile-nav {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 1100;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 5rem 1.5rem 2.5rem;
   background: rgba(20, 51, 14, 0.98);
   opacity: 0;
   visibility: hidden;
@@ -367,6 +363,63 @@ p {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.mobile-nav__bar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 3.75rem;
+  padding: 0.625rem var(--pad-x);
+  padding-top: max(0.625rem, env(safe-area-inset-top, 0px));
+}
+
+.mobile-nav__links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem 2.5rem;
+  overflow-y: auto;
+}
+
+.mobile-nav-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-close__icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.mobile-nav-close:hover,
+.mobile-nav-close:focus-visible {
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--gold);
+}
+
+html.nav-open .nav-menu-btn {
+  position: relative;
+  z-index: 1200;
 }
 
 .mobile-nav a:not(.btn) {
@@ -400,26 +453,12 @@ p {
   }
 
   .site-header__row {
-    display: grid;
-    grid-template-columns: 2.75rem 1fr 2.75rem;
-    align-items: center;
-    height: var(--header-bar-h);
-    min-height: var(--header-bar-h);
-    max-height: var(--header-bar-h);
+    justify-content: space-between;
   }
 
   .site-logo img {
-    object-position: center center;
+    object-position: left center;
     max-width: min(11rem, 52vw);
-  }
-
-  .nav-menu-btn {
-    grid-column: 1;
-  }
-
-  .site-logo {
-    grid-column: 2;
-    justify-self: center;
   }
 }
 
