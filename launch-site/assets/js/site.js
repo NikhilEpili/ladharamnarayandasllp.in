@@ -472,8 +472,15 @@ function prepareSplitText(el) {
           appendWord(part, false);
         }
       });
-    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
-      frag.appendChild(document.createElement("br"));
+    } else if (
+      node.nodeType === Node.ELEMENT_NODE &&
+      (node.tagName === "BR" ||
+        (node.tagName === "SPAN" && node.classList.contains("split-break")))
+    ) {
+      var lineBreak = document.createElement("span");
+      lineBreak.className = "split-break";
+      lineBreak.setAttribute("aria-hidden", "true");
+      frag.appendChild(lineBreak);
     } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "EM") {
       appendWord(node.textContent.trim(), true);
     }
