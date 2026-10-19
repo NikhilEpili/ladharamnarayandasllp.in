@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
   if (location.protocol === "file:") return;
-  var swUrl = "/launch-site/sw.js?v=3";
+  var swUrl = "/sw.js?v=1";
   window.addEventListener("load", function () {
     navigator.serviceWorker.register(swUrl).catch(function () {});
   });

@@ -1,7 +1,6 @@
 /* Offline-friendly cache for static assets (GitHub Pages). Bump CACHE when CSS/JS changes. */
-const CACHE = "ln-llp-static-v4";
-const BASE = "/launch-site";
-const PRECACHE = [BASE + "/", BASE + "/index.html", "/favicon.ico"];
+const CACHE = "ln-llp-static-v5";
+const PRECACHE = ["/", "/index.html", "/favicon.ico"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -46,7 +45,7 @@ self.addEventListener("fetch", (event) => {
           }
           return response;
         })
-        .catch(() => caches.match(request).then((r) => r || caches.match(BASE + "/index.html")))
+        .catch(() => caches.match(request).then((r) => r || caches.match("/index.html")))
     );
     return;
   }

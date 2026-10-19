@@ -6,9 +6,8 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-LOGO = ROOT / "launch-site" / "assets" / "logo.png"
-SITE_ASSETS = ROOT / "launch-site" / "assets"
-COMING_SOON_ASSETS = ROOT / "assets"
+LOGO = ROOT / "assets" / "logo.png"
+SITE_ASSETS = ROOT / "assets"
 ROOT_ICO = ROOT / "favicon.ico"
 
 BG = (20, 51, 14, 255)  # --green-deep
@@ -29,9 +28,7 @@ def logo_on_square(source: Image.Image, size: int) -> Image.Image:
 
 def main() -> None:
     logo = Image.open(LOGO).convert("RGBA")
-    COMING_SOON_ASSETS.mkdir(parents=True, exist_ok=True)
-    logo.save(COMING_SOON_ASSETS / "logo.png", optimize=True)
-    print(f"wrote {(COMING_SOON_ASSETS / 'logo.png').relative_to(ROOT)}")
+    SITE_ASSETS.mkdir(parents=True, exist_ok=True)
 
     favicon_jobs = (
         ("favicon-16.png", 16),
@@ -40,10 +37,9 @@ def main() -> None:
     )
     for name, size in favicon_jobs:
         image = logo_on_square(logo, size)
-        for folder in (SITE_ASSETS, COMING_SOON_ASSETS):
-            path = folder / name
-            image.save(path, optimize=True)
-            print(f"wrote {path.relative_to(ROOT)} ({size}px)")
+        path = SITE_ASSETS / name
+        image.save(path, optimize=True)
+        print(f"wrote {path.relative_to(ROOT)} ({size}px)")
 
     ico_sizes = (48, 32, 16)
     ico_images = [logo_on_square(logo, s) for s in ico_sizes]

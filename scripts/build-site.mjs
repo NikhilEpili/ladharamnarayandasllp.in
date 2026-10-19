@@ -10,7 +10,7 @@ import { promisify } from "util";
 
 const gunzip = promisify(zlib.gunzip);
 const ROOT = path.resolve(import.meta.dirname, "..");
-const SITE_DIR = path.join(ROOT, "launch-site");
+const SITE_DIR = ROOT;
 const BUNDLE = path.join(ROOT, "source", "design-export.html");
 const ASSETS_DIR = path.join(SITE_DIR, "assets");
 

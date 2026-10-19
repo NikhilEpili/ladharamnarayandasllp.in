@@ -8,7 +8,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "launch-site" / "assets"
+ASSETS = ROOT / "assets"
 BRANDS = ASSETS / "brands"
 PRODUCTS = ASSETS / "products"
 LOGO = ASSETS / "logo.png"
